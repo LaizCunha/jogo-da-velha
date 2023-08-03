@@ -7,6 +7,47 @@ let messageText = document.querySelector("#message p");
 let secondPlayer;
 
 // Contador de Jogadas
-
 let player1 = 0;
 let player2 = 0;
+
+
+// Evento de click aos boxes
+for(let i = 0; i < boxes.length; i++){
+   
+    boxes[i].addEventListener("click", function () {
+          
+        let el = checkEl(player1, player2);
+
+        // Verifica se ja há algum elemento no box
+        if(this.childNodes.length == 0) {
+        
+        let cloneEl = el.cloneNode(true);
+        this.appendChild(cloneEl);
+
+        // Computa a jogada
+        if(player1 == player2) {
+            player1++;
+        } else {
+            player2++;
+        }
+
+        // Checa quem venceu
+        checkWinCondition();
+
+        }
+
+    });
+}
+
+// Verifica de quem é a vez de jogar
+function checkEl(player1, player2) {
+          
+        if(player1 == player2) {
+            el = x;
+        } else {
+            el = o;
+        }
+
+        return el;
+}
+
