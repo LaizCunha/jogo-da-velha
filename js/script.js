@@ -27,6 +27,11 @@ for(let i = 0; i < boxes.length; i++){
         // Computa a jogada
         if(player1 == player2) {
             player1++;
+
+            if(secondPlayer == 'ai-player'){
+                computerPlay();
+                player2++;
+            }
         } else {
             player2++;
         }
@@ -248,6 +253,30 @@ function declararWinner(winner) {
 
 }
 
-// Jogando com a IA
+// Jogando contra a IA
 
+function computerPlay() {
+
+    let cloneO = o.cloneNode(true);
+    counter = 0;
+    filled = 0;
+
+    for(let i = 0; i < boxes.length; i++) {
+        let randomNumber = Math.floor(Math.random() * 5);
+
+        if(boxes[i].childNodes[0] == undefined) {
+            if(randomNumber <= 1) {
+                boxes[i].appendChild(cloneO);
+                counter++;
+                break;
+            }
+        } else {
+            filled++;
+        }
+    } 
+
+    if(counter == 0 && filled < 9) {
+        computerPlay();
+    }
+}
 
