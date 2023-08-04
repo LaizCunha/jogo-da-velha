@@ -39,6 +39,26 @@ for(let i = 0; i < boxes.length; i++){
     });
 }
 
+// Escolhendo jogador (2 players ou IA)
+for(let i = 0; i < buttons.length; i++) {
+    buttons[i].addEventListener("click", function() {
+        
+        secondPlayer = this.getAttribute("id");
+
+        for(let j = 0; j < buttons.length; j++) {
+            buttons[j].style.display = 'none';
+        }
+
+        setTimeout(function() {
+
+            let container = document.querySelector("#container");
+            container.classList.remove("hide");
+
+        }, 500);
+    });
+}
+
+
 // Verifica de quem é a vez de jogar
 function checkEl(player1, player2) {
           
@@ -227,4 +247,7 @@ function declararWinner(winner) {
 
 
 }
+
+// Jogando com a IA
+
 
